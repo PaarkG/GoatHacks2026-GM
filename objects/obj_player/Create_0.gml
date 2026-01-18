@@ -21,3 +21,11 @@ function sleep() {
     energy = min(100, energy + 40);
     sanity += random(10) - 5;
 }
+
+function study() {
+    energy -= 5;
+    sanity += random(10) - 5;
+    grade_one = min(100, grade_one + random(30));
+    grade_two = min(100, grade_two + random(30));
+    grade_three = min(100, grade_three + random(30));
+}

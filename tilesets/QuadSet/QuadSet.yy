@@ -1,13 +1,13 @@
 {
   "$GMTileSet":"v1",
-  "%Name":"DormSet",
+  "%Name":"QuadSet",
   "autoTileSets":[],
   "macroPageTiles":{
     "SerialiseHeight":0,
     "SerialiseWidth":0,
     "TileSerialiseData":[],
   },
-  "name":"DormSet",
+  "name":"QuadSet",
   "out_columns":4,
   "out_tilehborder":2,
   "out_tilevborder":2,
@@ -18,8 +18,8 @@
   "resourceType":"GMTileSet",
   "resourceVersion":"2.0",
   "spriteId":{
-    "name":"spr_dorm_set",
-    "path":"sprites/spr_dorm_set/spr_dorm_set.yy",
+    "name":"spr_quad_set",
+    "path":"sprites/spr_quad_set/spr_quad_set.yy",
   },
   "spriteNoExport":false,
   "textureGroupId":{
@@ -34,5 +34,5 @@
   "tileWidth":16,
   "tilexoff":0,
   "tileyoff":0,
-  "tile_count":20,
+  "tile_count":16,
 }
