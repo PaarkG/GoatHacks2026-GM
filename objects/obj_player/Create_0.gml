@@ -5,7 +5,7 @@ facing = 0;
 energy = 100;
 hygiene = 100;
 food = 100;
-rizz = 100;
+rizz = 50;
 sanity = 100;
 
 grade_one = 70;
