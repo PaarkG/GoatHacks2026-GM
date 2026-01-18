@@ -1,6 +1,6 @@
 block = false;
 global.resumeTime();
 
-global.tp_x = 530;
-global.tp_y = 450;
+global.tp_x = 630;
+global.tp_y = 475;
 room_goto(Quad);

@@ -5,16 +5,20 @@ global.audio_file_path = "";
 global.current_sound = -1;
 global.pending_tts_text = "";
 
-global.generate_ai_dialog = function(relationship) {
+global.generate_ai_dialog = function(relationship, voice_id) {
     /*
     Generates contextual dialog based on game stats and plays it as speech
     
     relationship: "professor", "friend", "roommate", "romantic_interest", etc.
+    voice_id: ElevenLabs voice ID (e.g., "21m00Tcm4TlvDq8ikWAM" for Rachel)
     
     Example usage:
-        generate_ai_dialog("professor");
-        generate_ai_dialog("friend");
+        generate_ai_dialog("professor", "21m00Tcm4TlvDq8ikWAM");
+        generate_ai_dialog("friend", "pNInz6obpgDQGcFmaJgB");
     */
+    
+    // Store voice_id for later use in TTS
+    global.current_voice_id = voice_id;
     
     // Build URL with all game stats
     var url = "http://localhost:5000/generate_response";
@@ -31,8 +35,11 @@ global.generate_ai_dialog = function(relationship) {
     // Request the AI-generated text
     global.text_request = http_get(url);
     
-    show_debug_message("Requesting AI dialog for: " + relationship);
+    show_debug_message("Requesting AI dialog for: " + relationship + " with voice: " + voice_id);
 }
+
+// ===== HELPER FUNCTION: Play TTS (internal use) =====
+
 
 // ===== HELPER FUNCTION: Play TTS (internal use) =====
 
@@ -55,15 +62,18 @@ function play_tts(text) {
     // URL encode the text
     var encoded_text = text;
     encoded_text = string_replace_all(encoded_text, " ", "%20");
-    encoded_text = string_replace_all(encoded_text, "!", "%21");
     encoded_text = string_replace_all(encoded_text, "?", "%3F");
+    encoded_text = string_replace_all(encoded_text, "!", "%21");
     encoded_text = string_replace_all(encoded_text, ",", "%2C");
     encoded_text = string_replace_all(encoded_text, ".", "%2E");
     encoded_text = string_replace_all(encoded_text, "'", "%27");
+    encoded_text = string_replace_all(encoded_text, "&", "%26");
     
-    // Request TTS
-    var url = "http://localhost:5000/tts?text=" + encoded_text;
+    // Build URL with text and voice_id
+    var url = "http://localhost:5000/tts";
+    url += "?text=" + encoded_text;
+    url += "&voice_id=" + global.current_voice_id;
     global.audio_request = http_get_file(url, global.audio_file_path);
     
-    show_debug_message("Generating TTS: " + text);
+    show_debug_message("Generating TTS: " + text + " (Voice: " + global.current_voice_id + ")");
 }

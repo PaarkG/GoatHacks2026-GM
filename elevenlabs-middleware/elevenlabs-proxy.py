@@ -8,8 +8,8 @@ import os
 app = Flask(__name__)
 
 # Your API keys
-ELEVENLABS_API_KEY = ""
-GEMINI_API_KEY = ""
+ELEVENLABS_API_KEY = "sk_cb8f778f7a65a8b35f4dac2da799fd9424c2e3f4dc2838c8"
+GEMINI_API_KEY = "AIzaSyBg-X50jMG_B212KwPQGCXzwlKeuJ_bzzI"
 VOICE_ID = "21m00Tcm4TlvDq8ikWAM"  # Rachel voice
 
 @app.route('/list_models')
@@ -21,7 +21,7 @@ def list_models():
         return jsonify(response.json())
     except Exception as e:
         return jsonify({"error": str(e)}), 500
-    
+
 @app.route('/generate_response')
 def generate_response():
     """Generate a contextual response based on game stats using Gemini"""
@@ -108,12 +108,15 @@ Response:"""
 def text_to_speech():
     """Convert text to speech using ElevenLabs and return OGG audio"""
     try:
-        # Get text from URL parameter
+        # Get text and voice_id from URL parameters
         text = request.args.get('text', 'Hello world')
+        voice_id = request.args.get('voice_id', VOICE_ID)  # Use default if not provided
+        
         print(f"Generating TTS for: {text}")
+        print(f"Using voice: {voice_id}")
         
         # Call ElevenLabs API
-        url = f"https://api.elevenlabs.io/v1/text-to-speech/{VOICE_ID}"
+        url = f"https://api.elevenlabs.io/v1/text-to-speech/{voice_id}"
         
         headers = {
             "xi-api-key": ELEVENLABS_API_KEY,

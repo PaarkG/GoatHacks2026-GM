@@ -7,6 +7,7 @@
   "inheritLayers":false,
   "instanceCreationOrder":[
     {"name":"inst_7143C0A2","path":"rooms/Quad/Quad.yy",},
+    {"name":"inst_57642DD8","path":"rooms/Quad/Quad.yy",},
   ],
   "isDnd":false,
   "layers":[
@@ -14,6 +15,7 @@
         {"$GMRInstance":"v4","%Name":"inst_7143C0A2","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_7143C0A2","objectId":{"name":"obj_dorm_collider","path":"objects/obj_dorm_collider/obj_dorm_collider.yy",},"previewSprite":{"name":"spr_collider_mask","path":"sprites/spr_collider_mask/spr_collider_mask.yy",},"properties":[
             {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_dorm_collider","path":"objects/obj_dorm_collider/obj_dorm_collider.yy",},"propertyId":{"name":"sprite_index","path":"objects/obj_dorm_collider/obj_dorm_collider.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"spr_collider_mask",},
           ],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":0.5,"scaleY":0.6,"x":632.0,"y":512.0,},
+        {"$GMRInstance":"v4","%Name":"inst_57642DD8","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_57642DD8","objectId":{"name":"obj_world_load","path":"objects/obj_world_load/obj_world_load.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":544.0,"y":480.0,},
       ],"layers":[],"name":"Instances","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRTileLayer":"","%Name":"Walls","depth":100,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"name":"Walls","properties":[],"resourceType":"GMRTileLayer","resourceVersion":"2.0","tiles":{"SerialiseHeight":48,"SerialiseWidth":86,"TileCompressedData":[
           -1234,-2147483648,1,9,-17,7,1,8,-67,-2147483648,1,1,-8,-2147483648,1,11,-8,-2147483648,1,2,-67,-2147483648,
@@ -58,7 +60,7 @@
   },
   "sequenceId":null,
   "views":[
-    {"hborder":32,"hport":1080,"hspeed":-1,"hview":90,"inherit":false,"objectId":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},"vborder":32,"visible":true,"vspeed":-1,"wport":1920,"wview":160,"xport":0,"xview":0,"yport":0,"yview":0,},
+    {"hborder":160,"hport":1080,"hspeed":-1,"hview":90,"inherit":false,"objectId":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},"vborder":90,"visible":true,"vspeed":-1,"wport":1920,"wview":160,"xport":0,"xview":0,"yport":0,"yview":0,},
     {"hborder":32,"hport":768,"hspeed":-1,"hview":768,"inherit":false,"objectId":null,"vborder":32,"visible":false,"vspeed":-1,"wport":1366,"wview":1366,"xport":0,"xview":0,"yport":0,"yview":0,},
     {"hborder":32,"hport":768,"hspeed":-1,"hview":768,"inherit":false,"objectId":null,"vborder":32,"visible":false,"vspeed":-1,"wport":1366,"wview":1366,"xport":0,"xview":0,"yport":0,"yview":0,},
     {"hborder":32,"hport":768,"hspeed":-1,"hview":768,"inherit":false,"objectId":null,"vborder":32,"visible":false,"vspeed":-1,"wport":1366,"wview":1366,"xport":0,"xview":0,"yport":0,"yview":0,},
