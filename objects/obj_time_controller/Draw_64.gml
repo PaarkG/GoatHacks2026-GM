@@ -1,3 +1,5 @@
+if (!global.draw_primary_ui) exit;
+
 function daystring() {
     var dayname = "";
     

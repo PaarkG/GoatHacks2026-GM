@@ -26,6 +26,7 @@
   },
   "name":"GoatHacks2026",
   "resources":[
+    {"id":{"name":"EndFont","path":"fonts/EndFont/EndFont.yy",},},
     {"id":{"name":"Font1","path":"fonts/Font1/Font1.yy",},},
     {"id":{"name":"obj_ai_reference","path":"objects/obj_ai_reference/obj_ai_reference.yy",},},
     {"id":{"name":"obj_bed_yours","path":"objects/obj_bed_yours/obj_bed_yours.yy",},},

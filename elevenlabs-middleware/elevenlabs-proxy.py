@@ -4,6 +4,7 @@ import io
 import subprocess
 import tempfile
 import os
+import json
 
 app = Flask(__name__)
 
@@ -42,9 +43,9 @@ def generate_response():
         print(f"Grades - 1:{grade_one}, 2:{grade_two}, 3:{grade_three}")
         
         # Build the prompt for Gemini
-        prompt = f"""You are a {relationship} talking to a college student in a life simulation game. Based on their current stats, generate ONE short sentence (max 15 words) that this character would naturally say. Be conversational and react to their situation.
+        prompt = f"""You are simulating a conversation in a college life simulation game. The player is approaching a {relationship}. Generate a realistic two-part dialogue exchange.
 
-Current Stats (0-100 scale, 0=bad, 100=good):
+Current Player Stats (0-100 scale, 0=bad, 100=good):
 - Energy: {energy}
 - Hygiene: {hygiene}
 - Food: {food}
@@ -54,13 +55,30 @@ Current Stats (0-100 scale, 0=bad, 100=good):
 - Grade in Class 2: {grade_two}
 - Grade in Class 3: {grade_three}
 
-Rules:
-- ONE sentence only, max 15 words
-- Be natural and conversational
-- React to the most notable stat issues
-- Match the personality of a {relationship}
-- Don't mention numbers or stats directly
-- Sound like a real person would talk
+Generate:
+1. PLAYER dialogue: One sentence the player would say when initiating conversation (max 12 words). Should reflect their current state subtly.
+2. NPC dialogue: The {relationship}'s response (max 15 words). React to the player's state and what they said.
+
+Dialog Rules:
+- Natural, conversational language
+- Player's dialog should hint at their condition without stating stats
+- NPC reacts to both what player says AND their appearance/condition
+- Sound like real people talking
+- Don't mention numbers or stats explicitly
+
+Rizz Evaluation:
+Evaluate how this interaction affects the player's charisma based on:
+- Their hygiene, energy, sanity (appearance/demeanor)
+- Their academic performance (if relevant to conversation)
+- Quality of their greeting/approach
+
+Suggest rizz change from -25 to +10:
+- Bad appearance/low stats/awkward approach: -15 to -25
+- Mediocre interaction: -5 to +2
+- Good appearance/high stats/smooth approach: +3 to +10
+
+Respond ONLY with valid JSON (no markdown, no extra text):
+{{"player_text": "player's greeting here", "npc_text": "npc's response here", "rizz_change": 5}}
 
 Response:"""
         
@@ -83,15 +101,39 @@ Response:"""
         gemini_data = gemini_response.json()
         generated_text = gemini_data['candidates'][0]['content']['parts'][0]['text'].strip()
         
-        # Clean up the response (remove quotes if Gemini added them)
-        generated_text = generated_text.strip('"').strip("'")
+        # Parse the JSON response from Gemini
+        # Remove markdown code blocks if present
+        generated_text = generated_text.replace('```json', '').replace('```', '').strip()
         
-        print(f"Generated: {generated_text}")
-        
-        return jsonify({
-            "text": generated_text,
-            "success": True
-        })
+        try:
+            response_data = json.loads(generated_text)
+            player_text = response_data.get('player_text', '').strip('"').strip("'")
+            npc_text = response_data.get('npc_text', '').strip('"').strip("'")
+            rizz_change = response_data.get('rizz_change', 0)
+            
+            # Clamp rizz_change to valid range
+            rizz_change = max(-25, min(10, rizz_change))
+            
+            print(f"Generated Player: {player_text}")
+            print(f"Generated NPC: {npc_text}")
+            print(f"Rizz change: {rizz_change:+d}")
+            
+            return jsonify({
+                "player_text": player_text,
+                "npc_text": npc_text,
+                "rizz_change": rizz_change,
+                "success": True
+            })
+            
+        except json.JSONDecodeError as e:
+            print(f"Failed to parse JSON: {generated_text}")
+            # Fallback
+            return jsonify({
+                "player_text": "Hey, how's it going?",
+                "npc_text": "Good to see you!",
+                "rizz_change": 0,
+                "success": True
+            })
         
     except Exception as e:
         error_msg = f"Gemini Error: {str(e)}"

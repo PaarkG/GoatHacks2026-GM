@@ -1,11 +1,20 @@
-// Track requests
 global.text_request = -1;
 global.audio_request = -1;
 global.audio_file_path = "";
 global.current_sound = -1;
-global.pending_tts_text = "";
+global.current_voice_id = "21m00Tcm4TlvDq8ikWAM"; // Default voice
+
+// Dialog display
+global.player_dialog = "";
+global.npc_dialog = "";
+global.pending_npc_text = "";
+global.dialog_timer = 0;
+
+// ===== MAIN FUNCTION: Generate AI Dialog and Play =====
 
 global.generate_ai_dialog = function(relationship, voice_id) {
+    global.paused = true;
+    
     /*
     Generates contextual dialog based on game stats and plays it as speech
     
@@ -37,9 +46,6 @@ global.generate_ai_dialog = function(relationship, voice_id) {
     
     show_debug_message("Requesting AI dialog for: " + relationship + " with voice: " + voice_id);
 }
-
-// ===== HELPER FUNCTION: Play TTS (internal use) =====
-
 
 // ===== HELPER FUNCTION: Play TTS (internal use) =====
 

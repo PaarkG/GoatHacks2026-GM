@@ -1,3 +1,42 @@
+function scr_fade_and_exit() {
+    // 1. Draw the black overlay
+    draw_set_color(c_black);
+    draw_set_alpha(fade_alpha);
+    draw_rectangle(0, 0, display_get_gui_width(), display_get_gui_height(), false);
+    draw_set_alpha(1); // Reset alpha for other drawing
+
+    // 2. Increase darkness for the next frame
+    fade_alpha += 0.02; 
+
+    // 3. THE "YIELD": If we are fully black, stop the logic here
+    if (fade_alpha >= 1) {
+        fade_alpha = 1;
+        return; // Exits the function immediately; code below this won't run
+    }
+    
+    // Any code here only runs while the screen is still partially transparent
+    show_debug_message("Still fading...");
+}
+
+if (!global.draw_primary_ui) {
+    if (global.ending != "") {
+        scr_fade_and_exit();
+        if (fade_alpha >= 1) { 
+            var default_font = draw_get_font();
+            draw_set_font(EndFont);
+            draw_set_colour(c_white);
+            
+            var print_string = "GAME OVER: " + global.ending;
+            
+            draw_text(display_get_gui_width() / 2 - string_width(print_string) / 2, display_get_gui_height() / 2, print_string);
+            
+            draw_set_font(default_font);
+            draw_set_colour(c_black);
+        }
+    }
+    exit;
+}    
+
 var bar_scale = 4;
 
 var inner_xoffset = 50;

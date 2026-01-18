@@ -2,15 +2,49 @@ if (first) {
     first = false;
     
     array_push(global.on_hour, function() {
-        energy -= 4;
-        hygiene -= 2;
+        energy -= 5;
+        hygiene -= 5;
         food -= 5;
-        sanity -= 1;
+        sanity -= 5;
         
-        grade_one -= 1;
-        grade_two -= 1;
-        grade_three -= 1;
+        grade_one -= 2;
+        grade_two -= 2;
+        grade_three -= 2;
     });
+}
+
+function trigger_no_energy() {
+    global.paused = true;
+    global.draw_primary_ui = false;
+    global.ending = "You fade into a deep sleep, and wake up with 3 NR's";
+}
+
+function trigger_no_hygiene() {
+    global.paused = true;
+    global.draw_primary_ui = false;
+    global.ending = "You stunk yourself to death... that' a first!";
+}
+
+function trigger_no_food() {
+    global.paused = true;
+    global.draw_primary_ui = false;
+    global.ending = "I got hungry watching you play this game...";
+}
+
+function trigger_no_sanity() {
+    global.paused = true;
+    global.draw_primary_ui = false;
+    global.ending = "RAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH️";
+}
+
+if (energy <= 0) {
+    trigger_no_energy();
+} else if (hygiene <= 0) {
+    trigger_no_hygiene();
+} else if (food <= 0) {
+    trigger_no_food();
+} else if (sanity <= 0) {
+    trigger_no_sanity();
 }
 
 if (global.paused) exit;
