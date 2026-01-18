@@ -1,9 +1,33 @@
-var w = 76;
-var h = 28;
-var padding_top = 10;
-var padding_right = 10;
+function daystring() {
+    var dayname = "";
+    
+    switch (days) {
+        case 0:
+            dayname = "Monday";
+            break;
+        case 1:
+            dayname = "Tuesday";
+            break;
+        case 2:
+            dayname = "Wednesday";
+            break;
+        case 3:
+            dayname = "Thursday"
+            break;
+        case 4:
+            dayname = "Friday";
+            break;
+    }
+    
+    return dayname + ", Day " + string(days + 1);
+}
 
-var scale = 8;
+var w = 160;
+var h = 24;
+var padding_top = 20;
+var padding_right = 20;
+
+var scale = 4;
 
 var dx = surface_get_width(application_surface) - (w * scale) - padding_right;
 var dy = padding_top;
@@ -27,8 +51,11 @@ draw_set_font(Font1);
 draw_set_halign(fa_left);
 draw_set_valign(fa_top);
 
-var curr_hour = floor(timer / HOUR);
+var curr_hour = (floor(timer / HOUR) + hour_offset) % 24;
 var curr_minute = floor((timer % HOUR) / MINUTE);
+
+var hour_string = string(curr_hour);
+if (curr_hour < 10) hour_string = " " + hour_string;
 
 var minute_str = string(curr_minute);
 if (curr_minute < 10) minute_str = "0" + minute_str;
@@ -37,7 +64,7 @@ var text_padding_x = 5 * scale;
 var text_padding_y = 4 * scale;
 
 draw_text_transformed(dx + text_padding_x, dy + text_padding_y, 
-    string(curr_hour) + ":" + minute_str, 
+    hour_string + ":" + minute_str + " | " + daystring(), 
     scale, 
     scale, 
     0
