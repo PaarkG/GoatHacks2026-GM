@@ -1,11 +1,11 @@
 {
   "$GMObject":"",
-  "%Name":"obj_npc_roommate",
+  "%Name":"obj_npc_roommate2",
   "eventList":[],
   "managed":true,
-  "name":"obj_npc_roommate",
+  "name":"obj_npc_roommate2",
   "overriddenProperties":[
-    {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_npc_parent","path":"objects/obj_npc_parent/obj_npc_parent.yy",},"propertyId":{"name":"relationship","path":"objects/obj_npc_parent/obj_npc_parent.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"roommate",},
+    {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_npc_parent","path":"objects/obj_npc_parent/obj_npc_parent.yy",},"propertyId":{"name":"relationship","path":"objects/obj_npc_parent/obj_npc_parent.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"annoying roommate",},
     {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_npc_parent","path":"objects/obj_npc_parent/obj_npc_parent.yy",},"propertyId":{"name":"voice_id","path":"objects/obj_npc_parent/obj_npc_parent.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"pNInz6obpgDQGcFmaJgB",},
   ],
   "parent":{
@@ -34,8 +34,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_npc3",
-    "path":"sprites/spr_npc3/spr_npc3.yy",
+    "name":"spr_npc4",
+    "path":"sprites/spr_npc4/spr_npc4.yy",
   },
   "spriteMaskId":null,
   "visible":true,
