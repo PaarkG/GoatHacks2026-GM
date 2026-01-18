@@ -33,6 +33,7 @@
     {"id":{"name":"obj_desk_yours","path":"objects/obj_desk_yours/obj_desk_yours.yy",},},
     {"id":{"name":"obj_dorm_collider","path":"objects/obj_dorm_collider/obj_dorm_collider.yy",},},
     {"id":{"name":"obj_npc_parent","path":"objects/obj_npc_parent/obj_npc_parent.yy",},},
+    {"id":{"name":"obj_npc_roommate","path":"objects/obj_npc_roommate/obj_npc_roommate.yy",},},
     {"id":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},},
     {"id":{"name":"obj_quad_collider","path":"objects/obj_quad_collider/obj_quad_collider.yy",},},
     {"id":{"name":"obj_time_controller","path":"objects/obj_time_controller/obj_time_controller.yy",},},
