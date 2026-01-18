@@ -5,7 +5,7 @@
 timer = 0;
 paused = false;
 
-time_scale = 1000;
+time_scale = 100;
 hour_offset = 8;
 
 quarter_interval = 15 * MINUTE;
@@ -20,3 +20,13 @@ days = 0;
 
 global.on_day_end = [];
 global.on_hour = [];
+
+global.pauseTime = function() {
+    paused = true;
+}
+
+global.resumeTime = function() {
+    paused = false;
+}
+
+gpu_set_texfilter(false);
