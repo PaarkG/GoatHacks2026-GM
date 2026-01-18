@@ -22,7 +22,7 @@ function daystring() {
     return dayname + ", Day " + string(days + 1);
 }
 
-var w = 160;
+var w = 200;
 var h = 24;
 var padding_top = 20;
 var padding_right = 20;

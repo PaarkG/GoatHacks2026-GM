@@ -1,4 +1,4 @@
-if (paused) exit;
+if (global.paused) exit;
 
 timer += delta_time * time_scale;
 
@@ -23,18 +23,5 @@ if (timer >= next_hour)
 // DAY END (20 HOURS)
 if (timer >= next_day)
 {
-    paused = true;
-    
-    array_foreach(global.on_day_end, function(func) {
-        if (is_callable(func)) {
-            func();
-        }
-    })
-
-    timer = 0;
-    next_quarter = quarter_interval;
-    next_hour = hour_interval;
-    next_day = day_interval; 
-    
-    days++;
+    global.endDay();
 }

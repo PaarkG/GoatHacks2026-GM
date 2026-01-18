@@ -27,6 +27,7 @@
   "name":"GoatHacks2026",
   "resources":[
     {"id":{"name":"Font1","path":"fonts/Font1/Font1.yy",},},
+    {"id":{"name":"obj_bed","path":"objects/obj_bed/obj_bed.yy",},},
     {"id":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},},
     {"id":{"name":"obj_quad_collider","path":"objects/obj_quad_collider/obj_quad_collider.yy",},},
     {"id":{"name":"obj_time_controller","path":"objects/obj_time_controller/obj_time_controller.yy",},},
@@ -37,6 +38,7 @@
     {"id":{"name":"Hallway","path":"rooms/Hallway/Hallway.yy",},},
     {"id":{"name":"LectureHall","path":"rooms/LectureHall/LectureHall.yy",},},
     {"id":{"name":"Quad","path":"rooms/Quad/Quad.yy",},},
+    {"id":{"name":"spr_bed","path":"sprites/spr_bed/spr_bed.yy",},},
     {"id":{"name":"spr_class1_bar","path":"sprites/spr_class1_bar/spr_class1_bar.yy",},},
     {"id":{"name":"spr_class2_bar","path":"sprites/spr_class2_bar/spr_class2_bar.yy",},},
     {"id":{"name":"spr_class3_bar","path":"sprites/spr_class3_bar/spr_class3_bar.yy",},},

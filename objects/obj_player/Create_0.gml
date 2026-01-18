@@ -16,3 +16,8 @@ board_swipes = 12;
 flex_swipes = 2;
 
 first = true;
+
+function sleep() {
+    energy = min(100, energy + 40);
+    sanity += random(10) - 5;
+}

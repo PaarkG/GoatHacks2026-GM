@@ -1,3 +1,20 @@
+if (first) {
+    first = false;
+    
+    array_push(global.on_hour, function() {
+        energy -= 4;
+        hygiene -= 2;
+        food -= 5;
+        sanity -= 1;
+        
+        grade_one -= 10;
+        grade_two -= 10;
+        grade_three -= 10;
+    });
+}
+
+if (global.paused) exit;
+
 var _hor = keyboard_check(ord("D")) - keyboard_check(ord("A"));
 var _ver = keyboard_check(ord("S")) - keyboard_check(ord("W"));
 
@@ -25,19 +42,4 @@ if (_hor != 0 or _ver != 0) {
     } else if (sprite_index == spr_player_walk_left)    {
         sprite_index = spr_player_idle_left;
     }
-}
-
-if (first) {
-    first = false;
-    
-    array_push(global.on_hour, function() {
-        energy -= 4;
-        hygiene -= 2;
-        food -= 5;
-        sanity -= 1;
-        
-        grade_one -= 10;
-        grade_two -= 10;
-        grade_three -= 10;
-    });
 }

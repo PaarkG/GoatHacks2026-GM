@@ -3,7 +3,7 @@
 #macro HOUR (60 * MINUTE)
 
 timer = 0;
-paused = false;
+global.paused = false;
 
 time_scale = 100;
 hour_offset = 8;
@@ -22,11 +22,31 @@ global.on_day_end = [];
 global.on_hour = [];
 
 global.pauseTime = function() {
-    paused = true;
+    global.paused = true;
 }
 
 global.resumeTime = function() {
-    paused = false;
+    global.paused = false;
 }
 
-gpu_set_texfilter(false);
+global.endDay = function() {
+    if (global.paused) return;
+    global.paused = true;
+    timer = 0;
+    next_quarter = quarter_interval;
+    next_hour = hour_interval;
+    next_day = day_interval;
+    
+    array_foreach(global.on_day_end, function(func) {
+        if (is_callable(func)) {
+            func();
+        }
+    });
+    
+    days++;
+}
+
+global.skipHour = function() {
+    global.paused = true;
+    timer += hour_interval;
+}
