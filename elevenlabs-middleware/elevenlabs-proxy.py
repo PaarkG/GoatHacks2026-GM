@@ -8,8 +8,8 @@ import os
 app = Flask(__name__)
 
 # Your API keys
-ELEVENLABS_API_KEY = "sk_cb8f778f7a65a8b35f4dac2da799fd9424c2e3f4dc2838c8"
-GEMINI_API_KEY = "AIzaSyBg-X50jMG_B212KwPQGCXzwlKeuJ_bzzI"
+ELEVENLABS_API_KEY = ""
+GEMINI_API_KEY = ""
 VOICE_ID = "21m00Tcm4TlvDq8ikWAM"  # Rachel voice
 
 @app.route('/list_models')
